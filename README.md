@@ -18,3 +18,4 @@ If you need further support please open a topic at the our new forum!
 [Hyperion webpage/forum](https://www.hyperion-project.org).
 
 The source is released under MIT-License (see http://opensource.org/licenses/MIT).
+-
