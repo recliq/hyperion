@@ -186,7 +186,7 @@ int LedDeviceUdp::write(const std::vector<ColorRgb> & ledValues)
 				sendto(sockfd, udpbuffer, udpPtr, 0, p->ai_addr, p->ai_addrlen);
 				memset(udpbuffer, 0, sizeof udpbuffer);
 				udpPtr = 0;
-				udpbuffer[udpPtr++] = 0x9C;
+				udpbuffer[udpPtr++] = 0xC9;
 				udpbuffer[udpPtr++] = 0xDA;
 				udpbuffer[udpPtr++] = datasize/256;	// high byte
 				udpbuffer[udpPtr++] = datasize%256;	// low byte
