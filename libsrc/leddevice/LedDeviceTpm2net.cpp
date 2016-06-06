@@ -36,7 +36,9 @@ int LedDeviceTpm2net::write(const std::vector<ColorRgb> &ledValues)
 		_ledBuffer[5] = numPackets; // total frames
  		_ledBuffer.back() = 0x36; // block-end byte
 
-  	memcpy(6 + _ledBuffer.data(), ledValues.data() + ((a-1)*maxDatasize), datasize);
+		std::vector<ColorRgb> _ledData(ledValues.begin() + (a - 1) * maxDatasize / 3, ledValues.begin() + ((a - 1) * maxDatasize + datasize) / 3);
+
+  	memcpy(6 + _ledBuffer.data(), _ledData.data(), datasize);
 		ret = writeBytes(_ledBuffer.data(),_ledBuffer.size());
 		if (ret != 0)
 			return ret;
