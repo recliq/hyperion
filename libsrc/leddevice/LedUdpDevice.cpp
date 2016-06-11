@@ -17,13 +17,12 @@ LedUdpDevice::LedUdpDevice(const std::string& host, const uint16_t port) :
 	_port(port),
 	_client()
 {
-	//_client = new QUdpSocket(this);
 	// empty
 }
 
 LedUdpDevice::~LedUdpDevice()
 {
-
+	// empty
 }
 
 int LedUdpDevice::open()
@@ -34,22 +33,14 @@ int LedUdpDevice::open()
 
 int LedUdpDevice::writeBytes(const uint8_t *data, const unsigned size)
 {
-	unsigned i;
-	QByteArray udpdata;
-
-	for (i=0; i<size; i++)
-	{
-		udpdata.append(data[i]);
-	}
 	try
 	{
-		_client.write(udpdata);
+		_client.write((const char *)data, size);
 	}
 	catch (const std::exception& e)
 	{
 		std::cerr << "Unable to write to Udp device (" << e.what() << ")" << std::endl;
 		return -1;
 	}
-
 	return 0;
 }
