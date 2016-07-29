@@ -7,17 +7,18 @@
 #include "LedUdpDevice.h"
 
 ///
-/// Implementation of the LedDevice interface for writing to serial device using Tpm2net protocol.
+/// Implementation of the LedDevice interface for writing to network using Tpm2net protocol.
 ///
 class LedDeviceTpm2net : public LedUdpDevice
 {
 public:
 	///
-	/// Constructs the LedDevice for attached serial device using supporting Tpm2net protocol
-	/// All LEDs in the stripe are handled as one frame
+	/// Constructs the LedDevice for network UDP socket using Tpm2net protocol.
 	///
-	/// @param outputDevice The name of the output device (eg '/dev/ttyAMA0')
-	/// @param baudrate The used baudrate for writing to the output device
+	/// @param host The hostname/ip of the target device (eg '192.168.1.11')
+	/// @param port The port to send UDP packets to (eg 65506)
+	/// @param maxPacketsize The maximum size for a single UDP packet, if the LEDs data is larger
+	///                      it will be split into multiple packets.
 	///
 	LedDeviceTpm2net(const std::string& host, const uint16_t port, const uint16_t maxPacketsize);
 
@@ -35,5 +36,6 @@ public:
 private:
 	/// The buffer containing the packed RGB values
 	std::vector<uint8_t> _ledBuffer;
+	/// The max. UDP packetsize
 	uint16_t _maxPacketsize;
 };
