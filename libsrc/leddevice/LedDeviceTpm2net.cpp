@@ -49,6 +49,6 @@ int LedDeviceTpm2net::write(const std::vector<ColorRgb> &ledValues)
 
 int LedDeviceTpm2net::switchOff()
 {
-	ledBuffer.resize(0);
+	_ledBuffer.resize(0);
 	return 0;
 }
