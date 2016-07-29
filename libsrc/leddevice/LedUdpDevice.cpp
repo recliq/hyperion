@@ -1,13 +1,9 @@
-
 // STL includes
 #include <cstring>
 #include <iostream>
 
 // Qt includes
 #include <QTimer>
-
-// Serial includes
-//#include <serial/serial.h>
 
 // Local Hyperion includes
 #include "LedUdpDevice.h"
@@ -39,7 +35,7 @@ int LedUdpDevice::writeBytes(const uint8_t *data, const unsigned size)
 	}
 	catch (const std::exception& e)
 	{
-		std::cerr << "Unable to write to Udp device (" << e.what() << ")" << std::endl;
+		std::cerr << "Unable to write to network: (" << e.what() << ")" << std::endl;
 		return -1;
 	}
 	return 0;

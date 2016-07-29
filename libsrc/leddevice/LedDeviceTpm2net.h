@@ -34,8 +34,6 @@ public:
 	virtual int switchOff();
 
 private:
-	/// The buffer containing the packed RGB values
 	std::vector<uint8_t> _ledBuffer;
-	/// The max. UDP packetsize
 	uint16_t _maxPacketsize;
 };

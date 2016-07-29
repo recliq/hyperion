@@ -1,10 +1,8 @@
 #pragma once
 
+// Qt includes
 #include <QObject>
 #include <QUdpSocket>
-
-// Serial includes
-//#include <serial/serial.h>
 
 // Leddevice includes
 #include <leddevice/LedDevice.h>
@@ -38,14 +36,13 @@ public:
 	int open();
 
 protected:
-	/**
-	 * Writes the given bytes to the RS232-device and
-	 *
-	 * @param[in[ size The length of the data
-	 * @param[in] data The data
-	 *
-	 * @return Zero on succes else negative
-	 */
+	///
+	/// Writes the given bytes to the UDP socket.
+	///
+	/// @param[in[ size The length of the data
+	/// @param[in] data The data
+	/// @return Zero on succes else negative
+	///
 	int writeBytes(const uint8_t *data, const unsigned size);
 
 private:
